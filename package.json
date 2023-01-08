@@ -4,7 +4,6 @@
   "description": "",
   "main": "claseContenedor.js",
   "dependencies": {
-    "@faker-js/faker": "^7.5.0",
     "accepts": "^1.3.8",
     "array-flatten": "^1.1.1",
     "autocannon": "^7.10.0",
@@ -28,10 +27,8 @@
     "escape-html": "^1.0.3",
     "etag": "^1.8.1",
     "express": "^4.18.2",
-    "express-handlebars": "^6.0.6",
     "express-session": "^1.17.3",
     "finalhandler": "^1.2.0",
-    "firebase-admin": "^11.2.0",
     "forever": "^4.0.3",
     "forwarded": "^0.2.0",
     "fresh": "^0.5.2",
@@ -52,7 +49,6 @@
     "moment-timezone": "^0.5.34",
     "mongoose": "^6.6.1",
     "ms": "^2.0.0",
-    "mysql": "^2.18.1",
     "negotiator": "^0.6.3",
     "nodemailer": "^6.8.0",
     "normalizr": "^3.6.2",
@@ -74,10 +70,8 @@
     "setprototypeof": "^1.2.0",
     "side-channel": "^1.0.4",
     "socket.io": "^4.5.1",
-    "sqlite3": "^5.0.11",
     "statuses": "^2.0.1",
     "toidentifier": "^1.0.1",
-    "twilio": "^3.83.1",
     "type-is": "^1.6.18",
     "unpipe": "^1.0.0",
     "utils-merge": "^1.0.1",
@@ -86,7 +80,7 @@
   },
   "scripts": {
     "test": "node benchmark.js",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",

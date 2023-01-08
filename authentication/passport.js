@@ -10,7 +10,7 @@ passport.use(
 	new LocalStrategy(
 		{
 			passReqToCallback: true,
-			/* usernameField: "email", */
+			usernameField: "email", // no me toma el email como username
 			passwordField: "password", //
 		},
 		async (req,username, password, done) => {
@@ -39,11 +39,12 @@ passport.use(
 //Signgup
 passport.use('signup', new LocalStrategy(
     {  passReqToCallback: true,
-        /* usernameField: 'email', */
-        /* passwordField: 'password' */ //
+        usernameField: 'email',
+        passwordField: 'password' //
     },   
     async ( req, username, password, done) => {
         try {
+            console.log("username", username)
             const {email, password, name, phone, age,address, role} = req.body
             const user = await User.findOne({
                 email:email
@@ -66,21 +67,12 @@ passport.use('signup', new LocalStrategy(
                 role:role,
             });
 
-         /*  email,
-          password: hashedPassword,
-          nombre: nombre,
-          direccion: direccion,
-          edad: edad,
-          telefono: telefonoRegistrado,
-          foto: foto,
-          ordenes: ordenes */
-
-          await newUser.save();
-          console.log("user en passport login ", user)
-          return done(null, newUser);
-      } catch(error) {
-          console.log("error en signup ",error)
-      }
+            await newUser.save();
+            console.log("user en passport login ", user)
+            return done(null, newUser);
+        } catch(error) {
+            console.log("error en signup ",error)
+        }
 }));
 
 //Serializer

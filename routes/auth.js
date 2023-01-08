@@ -5,70 +5,11 @@ const authRouter = new Router()
 const auth = require('../middleware/auth')
 const passport = require('passport')
 const {loggerConsole} = require('../loggers/winston');
+const mailer = require("../utils/mailer");
 
-
-// authRouter.get('/', (req, res) => {
-//     /* res.render('./pages/home.ejs') */
-//     res.render(path.join(process.cwd(),'views/pages/home.ejs' )) 
-//   })
-  
-//   authRouter.get('/home', (req, res) => {
-//     const nombre =req.session
-//     console.log("nombre en ruta (antes del if) ", nombre)
-//     if (req.session?.nombre) {
-//         const nombre =req.session.nombre
-//         console.log("nombre en ruta ", nombre)
-//         res.render(path.join(process.cwd(), '/views/pages/home.ejs'), { nombre:nombre })
-//     } else {
-//         console.log ("rebotado")
-//         res.redirect('/login')
-//     }
-//   })
-
-// authRouter.get('/login', (req, res) => {
-//     const nombre = req.session?.nombre
-//     if (nombre) {(console.log("nombre ", nombre))}
-//     if (nombre) {
-//         res.redirect('/')
-//     } else {
-//         res.sendFile(path.join(process.cwd(), '/views/login.html'))
-//     }
-// })
-
-// authRouter.get('/logout', (req, res) => {
-//     const nombre = req.session?.nombre
-//     if (nombre) {
-//         req.session.destroy(err => {
-//             if (!err) {
-//                 res.render(path.join(process.cwd(), '/views/pages/logout.ejs'), { nombre })
-//             } else {
-//                 res.redirect('/')
-//             }
-//         })
-//     } else {
-//         res.redirect('/')
-//     }
-// })
-
-// authRouter.post('/login', (req, res) => {
-//     let name = req.body.nombre
-//     /* req.session.nombre = name */
-//     req.session = {nombre:req.body.nombre}
-//     console.log("req.session.nombre ", req.session.nombre)// UNDEFINED
-//     res.redirect('/home')
-// })
-
-
-// module.exports = authRouter
-
-/////////////////////////////////////////
 
 //Routes
-/* authRouter.post("/login", passport.authenticate('login', { failureRedirect: '/nocredentials' }), (req, res) => {
-    req.session.user = req.user
-    
-    res.redirect('/pages/home')
-}) */
+
 authRouter.post("/login",  
     passport.authenticate('login', { failureRedirect: '/nocredentials' }), 
     (req, res) => {
@@ -86,10 +27,11 @@ authRouter.post('/signup',
 		failureRedirect: "/errorRegister",   
 	}),
 	(req, res) => {
+        
 		res.redirect("./pages/singupExitoso");
 	}
 );
-
+/* console.log("req.user", req.user) */
 
 authRouter.get('/home', auth, (req, res) => {   
     console.log("peticion a home")

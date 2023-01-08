@@ -15,7 +15,7 @@ POST http://localhost:8080/api/productos/ HTTP/1.1
 Content-Type: application/json
 
 {
-    "nombre": "REMERAAAAAAAAAAA",
+    "nombre": "REMERA",
     "categoria": "remera 2000",
     "precio": 8800,
     "thumbnail": "ddff",
@@ -67,12 +67,12 @@ Content-Type: application/json
             {
                 "nombre": "remera6",
                 "precio": 5000,
-                "cantidad": 2
+                "cantidad": 4
             }
 	    ],
         "direccion": "Cualquiera 3000",
-        "ciudad": "Capital Federal",
-        "total": 16000
+        "ciudad": "Capital Federal 11",
+        "total": 66000
     }
 
 ###

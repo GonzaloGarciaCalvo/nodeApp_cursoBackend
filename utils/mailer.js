@@ -1,38 +1,7 @@
 const nodemailer = require('nodemailer')
 
-const TEST_MAIL = 'hans.swift@ethereal.email'
 const EMAIL = 'gonzagc22@gmail.com'
 
-// const mailerFunction = (name, email, order)=> {
-
-//     const prods = order.productos.map((item) => {
-// 			item = {
-// 				nombre:item.nombre,
-// 				precio:item.precio,
-// 				cantidad:item.cantidad,
-// 			};
-// 			return `<tr>
-//                         <td>
-//                             ${item.nombre}
-//                         </td>
-//                         <td>
-//                             ${item.precio}
-//                         </td>
-//                         <td>
-//                             ${i.cantidad}
-//                         </td>
-//                     </tr>`;
-// 	});
-//     const items = JSON.stringify(prods);
-
-    // const transporter = nodemailer.createTransport({
-    //     host: "smtp.ethereal.email",
-    //     port: 587,
-    //     auth: {
-    //         user: TEST_MAIL,
-    //         pass: "aNy6M9G93fMZmMfynN",
-    //     },
-    // });
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         port: 587,
@@ -42,25 +11,6 @@ const EMAIL = 'gonzagc22@gmail.com'
         }
     });
     
-    
-//     const mailOptions = {
-//         from: 'Servidor Node.js',
-//         to: `${email}`,
-//         subject: 'Nuevo Pedido',
-//         html: `<h1 style="color: blue;">Nuevo pedido de ${name}</h1>
-//               <h2 >Email: ${email}</h2> 
-//         `
-//     };
-    
-//         (async () => {
-//                 try {
-//                     const info = await transporter.sendMail(mailOptions);
-//                     console.log(info);
-//                 } catch (error) {
-//                     console.log(error);
-//                 }
-//         })();
-// }
 
 const mailOrden = async (user, order) => {
     const prods = order.productos.map((item) => {
@@ -84,9 +34,9 @@ const mailOrden = async (user, order) => {
     const items = JSON.stringify(prods);
     try {
         const info = await transporter.sendMail({
-            to: user,
-            from: EMAIL,
-            subject: "Nueva orden generada de Puzzles",
+            from: "server node",
+            to: 'gonzagc22@gmail.com',
+            subject: "Nueva orden generada",
             html: `
                 <style>
                     .tableProds {
@@ -127,20 +77,37 @@ const mailOrden = async (user, order) => {
                     </table> 
                 <p> Total: $ ${order.total} </p>
                 <p> Desde ya muchas gracias por su compra. Cualquier duda o consulta no dude en contactarnos.</p>
-                
                 `,
         });
-        console.log(`Se genero el envio de mail de la orden: ${order.numero}`);
+        
+        console.log(`mailer.js Se genero el envio de mail de la orden: ${order.numero}`);
     } catch (error) {
         console.log(`Error en el envio de la orden: ${error}`);
     } finally {
-        console.log("Order creada");
+        console.log("finally Order creada");
     }
     };
 
-module.exports = mailOrden;
-  
+const signupMail = async (user) => {
+    try {
+        const success = await transporter.sendMail({
+        from: 'NodeServer Admin',
+        to: 'gonzagc22@gmail.com',
+        subject: 'Registro de usuario',
+        html: `
+            <p>Email: ${user.email}</p>
+            <p>Nombre: ${user.name}</p>
+            <p>Edad: ${user.age}</p>
+            <p>Dirección: ${user.address}</p>
+            <p>Teléfono: ${user.phone}</p>
+        `,
+        });
+    } catch (error) {
+    }
+
+    };
+
+module.exports = {mailOrden, signupMail};
 
 
 
-/* module.exports = mailerFunction */

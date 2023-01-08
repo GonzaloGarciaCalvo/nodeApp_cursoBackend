@@ -1,12 +1,11 @@
 const express = require('express');
 const orden = require('../api/ordenes')
-const mailOrden = require("../utils/mailer");
+const mailer = require("../utils/mailer");
 
 const generateOrderController = async (req, res) => {
     
   const { email, productos, ciudad, direccion, total } = req.body;
   const getAll = await orden.getAll();
-  console.log("en generateOrderController")
 
   let numero = getAll.length + 1;
 
@@ -20,9 +19,8 @@ const generateOrderController = async (req, res) => {
   };
   const savedOrder = await orden.save(newOrden);
   console.log("savedOrder en controller-orden:", savedOrder)
-
   if (savedOrder) {
-    mailOrden(email, savedOrder);
+    mailer.mailOrden(email, savedOrder);
     res.json(savedOrder);
   } else {
     res.status(405).json({ message: "Error, vuelva a intentarlo" });

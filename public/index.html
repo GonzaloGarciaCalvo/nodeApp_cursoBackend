@@ -10,25 +10,6 @@
     <script src="https://cdn.jsdelivr.net/npm/normalizr@3.6.1/dist/normalizr.browser.min.js"></script>
     <title>Document</title>
 </head>
-<!-- <body>
-    <div class="container">
-        <h1>Hola</h1>
-        
-            <% if(nombre) { %>
-                <div class='login'>
-                    <form action="/logout" method="GET">
-                        <h1> Bienvenido
-                        </h1>
-                        <p class="card-title">
-                            <%= nombre %>.
-                        </p>
-                        <button class="btn btn-danger">Desloguearse</button>
-                    </form>
-                </div>
-                
-                    
-    </div>
-</body> -->
 <body>
     <div class="container mt-3">
         <div class="">
@@ -36,7 +17,7 @@
             <br>
             <form action="/login" method="post" >
                 <div class="form-group">
-                    <input id="username" class="form-control" type="email" name="username" required placeholder="Ingrese su email">
+                    <input id="email" class="form-control" type="email" name="email" required placeholder="Ingrese su email">
                     <input id="password" class="form-control" type="text" name="password" required placeholder="password">
                 </div>
                 <button class="btn btn-success mt-3">Enviar</button>
