@@ -1,6 +1,6 @@
 
-const MensajesDaoMongo = require('./MensajesDaoMongo')
-/* const MensajesDaoArchivo = require('./mensajes/MensajesDaoArchivo') */
+const MensajesDaoMongo = require('./MensDaoMongo')
+
 
 let mensajesDao;
 let selector;
