@@ -1,5 +1,5 @@
 
-const MensajesDaoMongo = require('./MensDaoMongo')
+const MensajesDaoMongo = require('./MensajesDaoMongo')
 
 
 let mensajesDao;
