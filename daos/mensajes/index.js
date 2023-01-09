@@ -1,10 +1,7 @@
-
 const MensajesDaoMongo = require('./MensajesDaoMongo')
-
+const {selector} = require('../../config')
 
 let mensajesDao;
-let selector;
-selector = 'mongoDB'
 
   switch (selector) {
     

@@ -1,11 +1,10 @@
 const CarritosDaoMongo = require('./CarritosDaoMongo')
 const CarritosDaoArchivo = require('./CarritosDaoArchivo')
+const {selector} = require('../../config')
 
 let carritosDao;
-let selector;
-selector = 'mongoDB'
-/* selector = 'archivo' */
 
+console.log(selector)
 
   switch (selector) {
     
@@ -20,8 +19,5 @@ selector = 'mongoDB'
     }
     
     const getCarritosDao= carritosDao
-    
-
-
 
     module.exports =  getCarritosDao

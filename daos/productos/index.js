@@ -1,10 +1,8 @@
 const ProductosDaoMongo = require('./ProductosDaoMongo')
 const ProductosDaoArchivo = require('./ProductosDaoArchivo')
-
+const {selector} = require('../../config')
 
 let productosDao;
-let selector;
-selector = 'mongoDB'
 
   switch (selector) {
 

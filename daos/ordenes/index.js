@@ -1,12 +1,8 @@
 const OrdenesDaoMongo = require('./OrdenesDaoMongo')
 const OrdenesDaoArchivo = require('./OrdenesDaoArchivo')
-
+const {selector} = require('../../config')
 
 let ordenesDao;
-let selector;
-selector = 'mongoDB'
-
-
 
   switch (selector) {
 

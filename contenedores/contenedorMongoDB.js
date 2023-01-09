@@ -1,9 +1,4 @@
-
-/* const mongoDB = require('../config') */
-/* const mongoDB = require('../configDB/mongoDB') */
 const mongoose =require('mongoose') 
-/* import mongoDB from '../config' */
-
 
 
 class ContenedorMongoDB {
@@ -13,28 +8,17 @@ class ContenedorMongoDB {
         this.connection()
     }
     connection = async () => {
-        // try {
-        //     /* console.log('modelo en ContenedorMongoDB', this.modelo()) */
-        //     const url = 'mongodb+srv://garciacalvog:yJrrTE4mcwui4Ed@cluster0.k3ncstn.mongodb.net/test'
-        //     await mongoose.connect(url,{
-        //         useNewUrlParser: true,
-        //         useUnifiedTopology: true,
-        //     })
-        //     console.log('MongoDB en connection contenedorMongoDB')
-        // } catch (error) {
-        //     console.error(error)
-        // }
 
         (async () => {
 					try {
-						/* console.log('modelo en ContenedorMongoDB', this.modelo()) */
+						
 						const url =
 							"mongodb+srv://garciacalvog:yJrrTE4mcwui4Ed@cluster0.k3ncstn.mongodb.net/test";
 						await mongoose.connect(url, {
 							useNewUrlParser: true,
 							useUnifiedTopology: true,
 						});
-						console.log("MongoDB en connection contenedorMongoDB");
+						
 					} catch (error) {
 						console.error(error);
 					}
